@@ -1,4 +1,4 @@
-#NFL Draft
+#NFL Draft [![Build Status](https://travis-ci.org/DVG/bradley_nfldraft.png?branch=master)](https://travis-ci.org/DVG/bradley_nfldraft)
 
 This application will allow a system administrator to perform an NFL Draft, as well as allowing users to view what players have been drafted, what's happened recently, and who remains to be drafted.
 
