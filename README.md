@@ -9,5 +9,5 @@ The following rake tasks will be provided:
 ```
 # NOTE: Not Yet Implemented
 rake draft:seed #seeds the application with the data provided by the NFL
-rake draft:execute # simulates and end-to-end draft
+rake draft:execute # simulates an end-to-end draft
 ```
