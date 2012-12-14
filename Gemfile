@@ -17,6 +17,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
 end
+
 gem 'jquery-rails'
