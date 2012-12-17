@@ -1,5 +1,5 @@
 class Ownership < ActiveRecord::Base
-  attr_accessible :player, :team
+  attr_accessible :player_id, :team_id
   
   validates_presence_of :player
   validates_presence_of :team

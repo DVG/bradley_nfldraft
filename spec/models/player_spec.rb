@@ -19,4 +19,9 @@ describe Player do
     team.acquire(player)
     player.should_not be_draftable
   end
+  it "returns a collection of undrafted players" do
+    drafted_player = create(:drafted_player)
+    undrafted_player = create(:undrafted_player)
+    Player.undrafted_players.should_not include drafted_player
+  end
 end

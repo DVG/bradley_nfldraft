@@ -1,0 +1,10 @@
+<h1><%= @team.name %></h1>
+<h2><%= "Round: #{@order.round}"%> <%= "Pick: #{@order.pick}"%></h2>
+
+
+<%= simple_form_for @ownership, :html => {:class => 'form-inline'} do |f| %>
+<%= f.association :player, :collection => @players, :value_method => lambda { |p| p.name }, :include_blank => false %>
+  <div class="form-actions">
+    <%= f.submit "Confirm Draft Selection", :class => 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -8,4 +8,8 @@ class Player < ActiveRecord::Base
   def draftable?
     self.team ? false : true
   end
+  
+  def self.undrafted_players
+    where('id not in (?)', Ownership.all.map(&:player_id))
+  end
 end

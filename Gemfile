@@ -21,3 +21,7 @@ group :test do
 end
 
 gem 'jquery-rails'
+gem 'less-rails'
+gem 'therubyracer'
+gem 'twitter-bootstrap-rails'
+gem 'simple_form'
