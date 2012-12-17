@@ -17,6 +17,7 @@ describe Player do
     player = create(:undrafted_player)
     team = create(:team)
     team.acquire(player)
+    player.reload
     player.should_not be_draftable
   end
   it "returns a collection of undrafted players" do
