@@ -5,14 +5,14 @@ FactoryGirl.define do
     name "Franklin McTesterson"
     position "QB"
   end
-  factory :undrafted_player do
+  factory :undrafted_player, class: Player do
     name "Bob Dole"
     position "C"
-    team nil
+    ownership nil
   end
-  factory :drafted_player do
+  factory :drafted_player, class: Player do
     name "Barack Obama"
     position "CB"
-    team
+    ownership
   end
 end

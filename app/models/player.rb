@@ -1,9 +1,11 @@
 class Player < ActiveRecord::Base
   validates_presence_of :name, :position
   attr_accessible :name, :position
-  belongs_to :team
+  
+  has_one :ownership
+  has_one :team, :through => :ownership
   
   def draftable?
-    self.team_id ? false : true
+    self.team ? false : true
   end
 end
