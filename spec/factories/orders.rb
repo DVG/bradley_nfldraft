@@ -5,5 +5,8 @@ FactoryGirl.define do
     round 1
     pick 1
     team
+    factory :consumed_order do
+      consumed true
+    end
   end
 end

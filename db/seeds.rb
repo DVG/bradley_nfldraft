@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+["Steelers", "Bengals", "Browns"].each do |name|
+  Team.find_or_create_by_name name
+end
+
+(1..3).each do |num|
+  o = Order.new
+  o.round = 1
+  o.pick = num
+  o.team = Team.find(num)
+  o.save
+end
+
+["Bob", "Barry", "Fred"].each do |name|
+  p = Player.new
+  p.name = name
+  p.position = "QB"
+  p.save
+end

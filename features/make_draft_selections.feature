@@ -35,6 +35,11 @@ Feature: Make draft selections
     Then the undrafted player should not be in the draft selection picklist
     
   Scenario: Drafting a player associates them with a team
-    Given an order, a player and a team
+    Given two orders two teams and two players
     When I draft the player
     Then the player should be associated with the team
+    
+  Scenario: Drafting a player advances user to next order
+    Given two orders two teams and two players
+    When I draft a player
+    Then the second order's team should be displayed on the new ownership page

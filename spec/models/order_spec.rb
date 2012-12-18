@@ -11,4 +11,18 @@ describe Order do
     team = create(:team)
     build(:order, team: team).team.should eq team
   end 
+  it "returns orders by round then by pick" do
+    order_one = create(:order, round: 1, pick: 2)
+    order_two = create(:order, round: 1, pick: 1)
+    Order.all.should == [order_two, order_one]
+  end
+  it "returns weather an order has been consumed" do
+    order = create(:consumed_order)
+    order.consumed?.should be_true
+  end
+  it "returns the first unconsumed order" do
+    consumed_order = create(:consumed_order, round: 1, pick: 1)
+    unconsumed_order = create(:order, round: 1, pick: 2)
+    Order.next.should eq unconsumed_order
+  end
 end
