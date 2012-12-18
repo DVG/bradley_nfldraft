@@ -2,9 +2,11 @@
 <h2><%= "Round: #{@order.round}"%> <%= "Pick: #{@order.pick}"%></h2>
 
 
-<%= simple_form_for @ownership, :html => {:class => 'form-inline'} do |f| %>
-<%= f.association :player, :collection => @players, :value_method => lambda { |p| p.name }, :include_blank => false %>
+<%= simple_form_for @ownership, :url => ownerships_path, :html => {:class => 'form-inline'} do |f| %>
+<%= f.association :player, :collection => @players, :value_method => lambda { |p| p.id }, :include_blank => false %>
   <div class="form-actions">
+    <%= f.input :order_id, :as => :hidden, :input_html => {:value => @order.id } %>
+    <%= f.input :team_id, :as => :hidden, :input_html => {:value => @team.id } %>
     <%= f.submit "Confirm Draft Selection", :class => 'btn btn-primary' %>
   </div>
 <% end %>

@@ -21,7 +21,7 @@ Feature: Make draft selections
     And a team and player
     When I visit the draft selection page
     Then I should see "Pick: 1"
-    
+
   Scenario: Player should be shown in the draft picklist
     Given a drafted player and an undrafted player
     And an order and team
@@ -33,3 +33,8 @@ Feature: Make draft selections
     And an order and team
     When I visit the draft selection page
     Then the undrafted player should not be in the draft selection picklist
+    
+  Scenario: Drafting a player associates them with a team
+    Given an order, a player and a team
+    When I draft the player
+    Then the player should be associated with the team

@@ -10,6 +10,11 @@ class Player < ActiveRecord::Base
   end
   
   def self.undrafted_players
-    where('id not in (?)', Ownership.all.map(&:player_id))
+    ownerships = Ownership.all
+    if ownerships.length == 0
+      all
+    else
+      where('id not in (?)', ownerships.map(&:player_id))
+    end
   end
 end
