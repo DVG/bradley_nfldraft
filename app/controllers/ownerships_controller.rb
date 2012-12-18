@@ -18,10 +18,11 @@ class OwnershipsController < ApplicationController
     if @team.acquire(@player)
       @order.consumed = true
       @order.save
+      notice = "Successfully drafted #{@player.name} into #{@team.name}"
       if Order.next?
-        redirect_to new_ownership_path, notice: "Successfully drafted #{@player.name} into #{@team.name}"
+        redirect_to new_ownership_path, notice: notice
       else
-        redirect_to page_path("draft_complete")
+        redirect_to page_path("draft_complete"), notice: notice
       end
     else
       render "new", alert: "Failed to draft player"
