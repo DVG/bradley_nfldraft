@@ -25,4 +25,13 @@ describe Order do
     unconsumed_order = create(:order, round: 1, pick: 2)
     Order.next.should eq unconsumed_order
   end
+  it "returns true if there is another order" do
+    create(:consumed_order)
+    create(:order)
+    Order.next?.should be_true
+  end
+  it "returns false if there is not another order" do
+    create(:consumed_order)
+    Order.next?.should be_false
+  end
 end

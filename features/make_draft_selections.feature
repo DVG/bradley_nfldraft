@@ -43,3 +43,8 @@ Feature: Make draft selections
     Given two orders two teams and two players
     When I draft a player
     Then the second order's team should be displayed on the new ownership page
+    
+  Scenario: Complete the draft
+    Given an order, team and player
+    When I draft a player
+    Then I should see the message "There are no more drafts, the NFL Draft is complete!"

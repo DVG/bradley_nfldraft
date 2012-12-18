@@ -7,4 +7,12 @@ class Order < ActiveRecord::Base
   def self.next
     where(:consumed => false).first
   end
+  
+  def self.next?
+    if self.next == nil #if next returns nil there aren't anymore orders
+      return false
+    else
+      return true
+    end
+  end
 end

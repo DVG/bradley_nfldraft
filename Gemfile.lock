@@ -70,6 +70,7 @@ GEM
     ffi (1.2.0)
     gherkin (2.11.5)
       json (>= 1.4.6)
+    high_voltage (1.1.1)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -178,6 +179,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   factory_girl_rails
+  high_voltage
   jquery-rails
   less-rails
   rails (= 3.2.9)
