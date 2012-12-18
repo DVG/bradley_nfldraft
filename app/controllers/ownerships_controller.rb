@@ -16,8 +16,9 @@ class OwnershipsController < ApplicationController
     @player = Player.find(params[:ownership][:player_id])
     @order = Order.find(params[:ownership][:order_id])
     if @team.acquire(@player)
-      @order.consumed = true
-      @order.save
+      ownership = @player.ownership
+      ownership.drafted_in(@order) # remember when you were drafted
+      @order.consume # mark this order as done
       notice = "Successfully drafted #{@player.name} into #{@team.name}"
       if Order.next?
         redirect_to new_ownership_path, notice: notice
@@ -27,5 +28,9 @@ class OwnershipsController < ApplicationController
     else
       render "new", alert: "Failed to draft player"
     end
+  end
+  
+  def results_by_round
+    @ownerships_by_round = Ownership.results_by_round
   end
 end

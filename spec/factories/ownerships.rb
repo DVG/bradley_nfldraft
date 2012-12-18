@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :ownership do
     player
     team
+    order
   end
 end

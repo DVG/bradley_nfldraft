@@ -6,4 +6,16 @@ class Ownership < ActiveRecord::Base
   
   belongs_to :player
   belongs_to :team
+  belongs_to :order
+  
+  delegate :round, :to => :order
+  
+  def drafted_in(order)
+    self.order = order
+    self.save
+  end
+  
+  def self.results_by_round
+    includes(:order).group_by(&:round)
+  end
 end

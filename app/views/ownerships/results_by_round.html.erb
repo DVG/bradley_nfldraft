@@ -1,0 +1,25 @@
+<h1>Results By Round</h1>
+
+<% @ownerships_by_round.each_key do |round| %>
+  <%= content_tag :div, :id => "round_#{round}" do%>
+  <%= content_tag :h2 do %>
+    <%= "Round #{round}" %>
+  <% end %>
+  <table class="table table-striped">
+    <tr>
+      <th>
+        Player
+      </th>
+      <th>
+        Team
+      </th>
+    </tr>
+    <% @ownerships_by_round[round].each do |ownership| %>
+      <%= content_tag_for(:tr, ownership) do %>
+        <td><%= ownership.player.name %></td>
+        <td><%= ownership.team.name %></td>
+      <% end %>
+    <% end %>
+  </table>
+  <% end %>
+<% end %>

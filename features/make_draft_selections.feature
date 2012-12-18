@@ -48,3 +48,8 @@ Feature: Make draft selections
     Given an order, team and player
     When I draft a player
     Then I should see the message "There are no more drafts, the NFL Draft is complete!"
+    
+  Scenario: Order is associated with the new ownership after the draft
+    Given an order, team and player
+    When I draft a player
+    Then the order should be associated with the ownership

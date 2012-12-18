@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218030235) do
+ActiveRecord::Schema.define(:version => 20121218161135) do
 
   create_table "orders", :force => true do |t|
     t.integer  "round"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20121218030235) do
     t.integer  "team_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "order_id"
   end
 
   create_table "players", :force => true do |t|

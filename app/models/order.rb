@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   attr_accessible :pick, :round, :team_id
   belongs_to :team
+  has_one :ownership
   
   default_scope order('round ASC, pick ASC')
   
@@ -14,5 +15,10 @@ class Order < ActiveRecord::Base
     else
       return true
     end
+  end
+  
+  def consume
+    self.consumed = true
+    self.save
   end
 end

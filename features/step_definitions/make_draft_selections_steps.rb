@@ -27,7 +27,7 @@ end
 Given /^an order, team and player$/ do
   @team = create(:team)
   @order = create(:order, team: @team)
-  @player = create(:player)
+  @player_one = create(:player)
 end
 
 Then /^the undrafted player should be in the draft selection picklist$/ do
@@ -54,8 +54,6 @@ Given /^an order, a player and a team$/ do
   @team = create(:team)
   @order = create(:order, team: @team)
   @player = create(:player)
-  
-  puts @order.inspect
 end
 
 When /^I draft the player$/ do
@@ -86,4 +84,12 @@ end
 
 Then /^the second order's team should be displayed on the new ownership page$/ do
   page.should have_content @team_two.name
+end
+
+Then /^I should see the message "(.+)"$/ do |text|
+  page.should have_content text
+end
+
+Then /^the order should be associated with the ownership$/ do
+  Ownership.last.order.should eq @order
 end

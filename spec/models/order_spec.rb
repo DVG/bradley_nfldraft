@@ -20,6 +20,12 @@ describe Order do
     order = create(:consumed_order)
     order.consumed?.should be_true
   end
+  it "marks itself as consumed" do
+    order = create(:order)
+    order.consume
+    order.reload
+    order.consumed?.should be_true
+  end
   it "returns the first unconsumed order" do
     consumed_order = create(:consumed_order, round: 1, pick: 1)
     unconsumed_order = create(:order, round: 1, pick: 2)

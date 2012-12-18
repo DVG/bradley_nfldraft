@@ -12,7 +12,7 @@ end
 
 (1..3).each do |num|
   o = Order.new
-  o.round = 1
+  o.round = rand(2)+1
   o.pick = num
   o.team = Team.find(num)
   o.save
