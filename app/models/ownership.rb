@@ -18,4 +18,8 @@ class Ownership < ActiveRecord::Base
   def self.results_by_round
     includes(:order).group_by(&:round)
   end
+  
+  def self.results_by_team
+    includes(:team).group_by(&:team)
+  end
 end

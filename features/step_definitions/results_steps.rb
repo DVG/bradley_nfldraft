@@ -17,6 +17,19 @@ Given /^two players drafted in two different rounds$/ do
   
 end
 
+Given /^two teams who drafted players$/ do
+  @ownership_one = create(:ownership, player: create(:player, name: "Player One"))
+  @ownership_two = create(:ownership, player: create(:player, name: "Player Two"))
+  @team_one = @ownership_one.team
+  @team_two = @ownership_two.team
+  @player_one = @ownership_one.player
+  @player_two = @ownership_two.player
+end
+
+When /^I view the results by team$/ do
+  visit results_by_team_ownerships_path
+end
+
 
 When /^I view the results by round$/ do
   visit results_by_round_ownerships_path
@@ -35,6 +48,17 @@ Then /^I should see the players under the correct rounds$/ do
     page.should_not have_content @player_two.name
   end
   within "#round_#{@order_two.round}" do
+    page.should_not have_content @player_one.name
+    page.should have_content @player_two.name
+  end
+end
+
+Then /^I should see the players listed under their team$/ do
+  within "#team_#{@team_one.id}" do
+    page.should have_content @player_one.name
+    page.should_not have_content @player_two.name
+  end
+  within "#team_#{@team_two.id}" do
     page.should_not have_content @player_one.name
     page.should have_content @player_two.name
   end

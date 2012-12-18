@@ -33,4 +33,8 @@ class OwnershipsController < ApplicationController
   def results_by_round
     @ownerships_by_round = Ownership.results_by_round
   end
+  
+  def results_by_team
+    @ownerships_by_team = Ownership.results_by_team
+  end
 end
