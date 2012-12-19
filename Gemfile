@@ -20,6 +20,10 @@ group :test do
   gem 'cucumber-rails', :require => false
 end
 
+group :development do
+  gem 'watir-webdriver'
+end
+
 gem 'jquery-rails'
 gem 'less-rails'
 gem 'therubyracer'
