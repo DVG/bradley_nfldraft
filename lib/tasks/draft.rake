@@ -6,9 +6,6 @@ require 'capybara/dsl'
 include Capybara::DSL
 
 Capybara.run_server = true
-#Capybara.register_driver :chrome do |app|
-#  Capybara::Selenium::Driver.new(app, :browser => :chrome)
-#end
 Capybara.current_driver = :selenium
 Capybara.app_host = 'localhost:3000'
 
