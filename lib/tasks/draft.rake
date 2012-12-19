@@ -1,4 +1,4 @@
-require 'CSV'
+require 'csv'
 require 'rubygems'
 require 'capybara'
 require 'capybara/dsl'
