@@ -9,4 +9,5 @@ BradleyNfldraft::Application.routes.draw do
   end
   match "undrafted_players" => 'players#undrafted_players', :as => :undrafted_players
   match "latest" => 'orders#latest', :as => :latest_orders
+  root :to => 'orders#latest'
 end
