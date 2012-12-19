@@ -1,0 +1,3 @@
+default: --no-source --format pretty --quiet
+focused: --no-source --format pretty --quiet -t @focus
+loud: --no-source --format pretty

@@ -17,4 +17,15 @@ class Player < ActiveRecord::Base
       where('id not in (?)', ownerships.map(&:player_id))
     end
   end
+  
+  def self.undrafted_by_position
+    self.order('position ASC, name ASC').undrafted_players.group_by(&:position)
+  end
+  
+  
+  # Returns last 3 drafted players
+  def self.latest_picks
+    ownerships = Ownership.all
+    order('created_at DESC').where('id in (?)', ownerships.map(&:player_id)).limit(3)
+  end
 end

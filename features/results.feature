@@ -13,7 +13,6 @@ Feature: Results
     When I view the results by round
     Then I should see the players under the correct rounds
     
-  @focus
   Scenario: Drafted Players are listed by team
     Given two teams who drafted players
     When I view the results by team

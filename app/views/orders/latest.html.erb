@@ -1,0 +1,28 @@
+<h1>Latest Picks</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Player</th>
+    <th>Team</th>
+  </tr>
+  <% @players.each do |player| %>
+    <%= content_tag_for(:tr, player) do %>
+      <td>
+        <%= player.name %>
+      </td>
+      <td>
+        <%= player.team.name %>
+      </td>
+    <% end %>
+  <% end %>
+</table>
+
+<div id="next_order">
+  <div class="page-header"><h2>Next Team</h2></div>
+  <% if !@order %>
+    <div class="alert alert-info">
+      The draft is complete! There are no more selections.
+    </div>
+  <% else %>
+    <h3><%= @order.team.name%></h3>
+  <% end  %>
+</div>

@@ -1,0 +1,27 @@
+<h1>Undrafted Players</h1>
+
+<% if @players.empty? %>
+<div class="alert alert-info">
+  There aren't any remaining undrafted players
+</div>
+<% else %>
+  <% @players.each_key do |position| %>
+  <%= content_tag :div, :id => "#{position}" do%>
+    <%= content_tag :h2 do %>
+      <%= "#{position}" %>
+    <% end %>
+    <table class="table table-striped">
+      <tr>
+        <th>
+          Player
+        </th>
+      </tr>
+      <% @players[position].each do |player| %>
+        <%= content_tag_for(:tr, player) do %>
+          <td><%= player.name %></td>
+        <% end %>
+      <% end %>
+    </table>
+    <% end %>
+  <% end %>
+<% end %>
